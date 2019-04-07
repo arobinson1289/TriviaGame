@@ -20,9 +20,45 @@ var questions = [
       userAnswer: ""
     }
   ];
-  
   // set user score
   var correct = 0;
+
+  //Set Var For Interval Timer
+  var timer = 10;
+  var intervalID;
+  var clockTicking = false;
+
+  function decTimer(){
+    clearInterval(intervalID);
+
+    intervalID = setInterval(function(){
+      timer--;
+      $("#timer").html(timer);
+      
+      if(timer === 0){
+        clearInterval(intervalID)
+        $("#alertTImer").html("<h1>TIMES UP</h1>");
+      }
+    },1*1000);
+  }
+
+  function buttonClick (){
+    clockTicking = !clockTicking;
+
+    if (clockTicking) {
+      clearInterval(intervalID);
+    } else {
+        decTimer();
+    }
+
+  };
+
+  $("#button").on("click",buttonClick);
+  $(document).on("click","#btn2", function (){
+    alert("this worked MF")
+  })
+
+  decTimer()
   
   // function to print all questions to page
   function renderQuestions() {
@@ -84,10 +120,11 @@ var questions = [
       }
       // when done making all of the choices, add whole question to the page
       $("#quiz-form").append($question);
+
     });
   }
-  setTimeout(renderQuestions,(3000)
 
+ 
   // create on "change" listener for all radio buttons but bind them to quiz-form since it's permanently on the page
   $("#quiz-form").on("change", ".form-check-input", function() {
     console.log(this);
