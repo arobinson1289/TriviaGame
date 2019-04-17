@@ -40,6 +40,7 @@ $(document).ready(function () {
       $("#timer").html(timer);
       if (timer === 0) {
         clearInterval(intervalID);
+        $("#quiz-form").html(" ");
         $("#timer").html('<h2>Time is up!</h2>');
 
       }
@@ -118,20 +119,15 @@ $(document).ready(function () {
         correct++;
       } else {
         incorrect++;
-        console.log("hello");
       }
     }
-  }
-
-  function results (){
-    
   }
 
   $(document).on("click", "#submit-button", function () {
     event.preventDefault();
     checkAnswers();
     console.log(correct, incorrect);
-    $("#quiz-form").html("<h3>Total Correct: "+ correct + "</h3><br><h3>Total Incorrect: " + incorrect);
+    $("#quiz-form").html("<h3>Total Correct: " + correct + "</h3><br><h3>Total Incorrect: " + incorrect);
     clearInterval(intervalID);
 
   })
@@ -142,7 +138,6 @@ $(document).ready(function () {
     decTimer();
     $("#startButton").html(" ");
     renderQuestions();
-    alert("you started");
 
   }
 
