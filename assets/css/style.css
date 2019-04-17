@@ -1,0 +1,13 @@
+.jumbotron {
+    background-image: url("assets/../../images/map-of-united-states.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+body {
+    align-content: center;
+    font-family: futura;
+    text-align: center;
+}
+.submitButton {
+    margin-top: 5px;
+}
